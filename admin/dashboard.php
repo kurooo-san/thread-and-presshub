@@ -68,7 +68,6 @@ if ($_co_exists && $_co_exists->num_rows > 0) {
             FROM custom_orders WHERE status NOT IN ('cancelled') AND created_at >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
             GROUP BY DATE_FORMAT(created_at, '%Y-%m')
         ) c ON m.month = c.month
-        GROUP BY m.month, m.label
         ORDER BY m.month ASC
     ");
 } else {
