@@ -55,11 +55,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Security headers
-header('X-Content-Type-Options: nosniff');
-header('X-Frame-Options: SAMEORIGIN');
-header('X-XSS-Protection: 1; mode=block');
-header('Referrer-Policy: strict-origin-when-cross-origin');
-header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+if (!headers_sent()) {
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('X-XSS-Protection: 1; mode=block');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+}
 
 // Helper functions
 function hashPassword($password) {
@@ -148,5 +150,4 @@ function logAudit($action, $entityType = null, $entityId = null, $details = null
     $stmt->execute();
     $stmt->close();
 }
-?>
 
