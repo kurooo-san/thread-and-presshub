@@ -513,34 +513,6 @@ body.home-page {
     gap: 1rem;
 }
 
-.hero-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.9rem;
-    margin-top: 1.5rem;
-}
-
-.hero-metric {
-    padding: 0.85rem 0.95rem;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.12);
-}
-
-.hero-metric strong {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 800;
-    line-height: 1;
-}
-
-.hero-metric span {
-    display: block;
-    margin-top: 0.35rem;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.78);
-}
-
 .feature-item {
     display: flex;
     align-items: center;

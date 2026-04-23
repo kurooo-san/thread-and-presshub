@@ -22,20 +22,6 @@ include 'includes/header/header.php';
                             <a href="shop.php" class="btn btn-hero">Shop Now <i class="fas fa-arrow-right ms-2"></i></a>
                             <a href="about.php" class="btn btn-hero-outline">Learn More</a>
                         </div>
-                        <div class="hero-metrics">
-                            <div class="hero-metric">
-                                <strong>500+</strong>
-                                <span>Styled pieces</span>
-                            </div>
-                            <div class="hero-metric">
-                                <strong>4.9</strong>
-                                <span>Customer rating</span>
-                            </div>
-                            <div class="hero-metric">
-                                <strong>24h</strong>
-                                <span>Custom design review</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
