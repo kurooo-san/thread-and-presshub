@@ -3,6 +3,8 @@ require 'includes/config.php';
 redirectToLogin();
 
 $pageTitle = 'Shop';
+$bodyClass = 'app-page shop-page';
+$mobileDockCurrent = 'shop';
 
 // Get filter parameters from GET request
 $selected_gender = $_GET['gender'] ?? null;
@@ -103,9 +105,9 @@ $total_products = $count_result ? $count_result->fetch_assoc()['total'] : 0;
 $count_stmt->close();
 ?>
 
-<div class="container py-4">
+<div class="container py-4 app-page-shell shop-page-shell">
     <!-- Page Header -->
-    <div class="mb-4">
+    <div class="mb-4 app-page-hero shop-page-hero">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="font-size:0.85rem;">
                 <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Home</a></li>
@@ -118,19 +120,34 @@ $count_stmt->close();
             </ol>
         </nav>
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-            <h1 style="font-weight:800; font-size:2rem; margin:0;">
-                <?php 
-                if ($selected_gender === 'womens') echo "Women's Collection";
-                elseif ($selected_gender === 'mens') echo "Men's Collection";
-                elseif ($selected_gender === 'kids') echo "Kids Collection";
-                elseif ($selected_category === 'accessories') echo "Accessories";
-                else echo "All Products";
-                ?>
-            </h1>
+            <?php
+            $shopHeading = 'All Products';
+            if ($selected_gender === 'womens') {
+                $shopHeading = "Women's Collection";
+            } elseif ($selected_gender === 'mens') {
+                $shopHeading = "Men's Collection";
+            } elseif ($selected_gender === 'kids') {
+                $shopHeading = 'Kids Collection';
+            } elseif ($selected_category === 'accessories') {
+                $shopHeading = 'Accessories';
+            }
+            ?>
+            <div>
+                <h1 class="app-page-title"><?php echo $shopHeading; ?></h1>
+                <p class="app-page-subtitle">Browse ready-to-wear pieces, refine by category, and jump to custom design when you need something more personal.</p>
+            </div>
             <a href="custom-design.php" class="btn btn-dark" style="border-radius:12px; padding:0.6rem 1.5rem; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:0.5rem;">
                 <i class="fas fa-palette"></i> Design Your Apparel
             </a>
         </div>
+    </div>
+
+    <div class="app-mobile-chip-row d-lg-none mb-4">
+        <a href="shop.php" class="app-mobile-chip <?php echo !$selected_gender && !$selected_category ? 'active' : ''; ?>">All</a>
+        <a href="shop.php?gender=mens" class="app-mobile-chip <?php echo $selected_gender === 'mens' ? 'active' : ''; ?>">Men</a>
+        <a href="shop.php?gender=womens" class="app-mobile-chip <?php echo $selected_gender === 'womens' ? 'active' : ''; ?>">Women</a>
+        <a href="shop.php?gender=kids" class="app-mobile-chip <?php echo $selected_gender === 'kids' ? 'active' : ''; ?>">Kids</a>
+        <a href="shop.php?category=accessories" class="app-mobile-chip <?php echo $selected_category === 'accessories' ? 'active' : ''; ?>">Accessories</a>
     </div>
 
     <div class="row">
@@ -195,6 +212,7 @@ $count_stmt->close();
 
         <!-- Products Section -->
         <div class="col-lg-9">
+            <div class="app-section-surface shop-products-surface">
             <!-- Toolbar -->
             <div class="shop-toolbar">
                 <span class="text-muted" style="font-size:0.88rem;">Showing <strong><?php echo $total_products; ?></strong> products</span>
@@ -290,6 +308,7 @@ $count_stmt->close();
                         </div>
                     </div>
                 <?php endif; ?>
+            </div>
             </div>
         </div>
     </div>

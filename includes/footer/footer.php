@@ -1,5 +1,29 @@
     </main>
 
+    <?php
+    $defaultMobileDockItems = [
+        ['key' => 'home', 'href' => 'index.php', 'icon' => 'fa-house', 'label' => 'Home'],
+        ['key' => 'shop', 'href' => 'shop.php', 'icon' => 'fa-store', 'label' => 'Shop'],
+        ['key' => 'design', 'href' => 'custom-design.php', 'icon' => 'fa-palette', 'label' => 'Design', 'center' => true],
+        ['key' => 'cart', 'href' => 'cart.php', 'icon' => 'fa-bag-shopping', 'label' => 'Cart'],
+        ['key' => 'profile', 'href' => isset($_SESSION['user_id']) ? 'profile.php' : 'login.php', 'icon' => 'fa-user', 'label' => isset($_SESSION['user_id']) ? 'Profile' : 'Sign In'],
+    ];
+    $mobileDockItems = $mobileDockItems ?? $defaultMobileDockItems;
+    ?>
+    <?php if (!empty($mobileDockCurrent)): ?>
+    <nav class="mobile-bottom-dock d-md-none" aria-label="Quick navigation">
+        <?php foreach ($mobileDockItems as $dockItem): ?>
+            <?php $dockClasses = ['mobile-dock-link']; ?>
+            <?php if (($dockItem['key'] ?? '') === $mobileDockCurrent) $dockClasses[] = 'active'; ?>
+            <?php if (!empty($dockItem['center'])) $dockClasses[] = 'dock-link-center'; ?>
+            <a href="<?php echo htmlspecialchars($dockItem['href']); ?>" class="<?php echo htmlspecialchars(implode(' ', $dockClasses)); ?>">
+                <i class="fas <?php echo htmlspecialchars($dockItem['icon']); ?>"></i>
+                <span><?php echo htmlspecialchars($dockItem['label']); ?></span>
+            </a>
+        <?php endforeach; ?>
+    </nav>
+    <?php endif; ?>
+
     <!-- Footer Features Strip -->
     <section class="footer-features">
         <div class="container">

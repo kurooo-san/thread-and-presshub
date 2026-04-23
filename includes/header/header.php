@@ -9,7 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="<?php echo (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) ? '../css/style.css' : 'css/style.css'; ?>" rel="stylesheet">
 </head>
-<body<?php echo (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) ? ' class="admin-page"' : ''; ?>>
+<?php
+$bodyClasses = [];
+if (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) {
+    $bodyClasses[] = 'admin-page';
+}
+if (!empty($bodyClass)) {
+    $bodyClasses[] = $bodyClass;
+}
+?>
+<body<?php echo !empty($bodyClasses) ? ' class="' . htmlspecialchars(implode(' ', $bodyClasses)) . '"' : ''; ?>>
     <!-- Announcement Bar -->
     <div class="top-info-bar text-center">
         <div class="container">

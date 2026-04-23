@@ -3,6 +3,8 @@ require 'includes/config.php';
 redirectToLogin();
 
 $pageTitle = 'Design Your Apparel';
+$bodyClass = 'app-page design-page';
+$mobileDockCurrent = 'design';
 
 // Get user discount type
 $user_discount = 'regular';
@@ -37,9 +39,19 @@ if ($tableCheck->num_rows === 0) {
     padding: 1.5rem;
 }
 
+.design-tool-container.app-page-shell {
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+}
+
 .design-tool-header {
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.design-tool-header.app-page-hero {
+    padding: 1.5rem 1.25rem;
+    border-radius: 28px;
 }
 
 .design-tool-header h1 {
@@ -477,6 +489,11 @@ if ($tableCheck->num_rows === 0) {
     margin-top: 2rem;
 }
 
+.my-designs-section.app-section-surface {
+    padding: 1.5rem;
+    border-radius: 24px;
+}
+
 .designs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -550,8 +567,31 @@ if ($tableCheck->num_rows === 0) {
 }
 
 @media (max-width: 768px) {
+    .design-tool-container.app-page-shell {
+        padding: 1rem 0.75rem 1.5rem;
+    }
+    .design-tool-header.app-page-hero {
+        padding: 1.25rem 1rem;
+        margin-bottom: 1.25rem;
+    }
     .design-workspace {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .design-toolbar,
+    .design-canvas-area,
+    .design-preview-panel {
+        border-radius: 24px;
+        box-shadow: 0 14px 40px rgba(18,18,18,0.08);
+    }
+    .canvas-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    .canvas-toolbar-left,
+    .canvas-toolbar-right {
+        flex-wrap: wrap;
     }
     .mockup-container {
         width: 300px;
@@ -559,6 +599,10 @@ if ($tableCheck->num_rows === 0) {
     }
     .design-tool-header h1 {
         font-size: 1.6rem;
+    }
+    .my-designs-section.app-section-surface {
+        margin-top: 1rem;
+        padding: 1.1rem;
     }
 }
 
@@ -814,8 +858,8 @@ if ($tableCheck->num_rows === 0) {
 }
 </style>
 
-<div class="design-tool-container">
-    <div class="design-tool-header">
+<div class="design-tool-container app-page-shell">
+    <div class="design-tool-header app-page-hero">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center" style="font-size:0.85rem;">
                 <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Home</a></li>
@@ -825,6 +869,13 @@ if ($tableCheck->num_rows === 0) {
         </nav>
         <h1><i class="fas fa-palette me-2"></i>Design Your Apparel</h1>
         <p>Create your own custom clothing design. Draw, upload images, add text, and preview on real apparel mockups.</p>
+    </div>
+
+    <div class="app-mobile-chip-row d-lg-none mb-3">
+        <a href="shop.php" class="app-mobile-chip">Shop</a>
+        <a href="cart.php" class="app-mobile-chip">Cart</a>
+        <a href="my-custom-orders.php" class="app-mobile-chip">Custom Orders</a>
+        <a href="profile.php" class="app-mobile-chip">Profile</a>
     </div>
 
     <div class="design-workspace">
@@ -1115,7 +1166,7 @@ if ($tableCheck->num_rows === 0) {
     </div>
 
     <!-- My Designs Section -->
-    <div class="my-designs-section">
+    <div class="my-designs-section app-section-surface">
         <h3 style="font-weight:700; margin-bottom:1rem;"><i class="fas fa-palette me-2"></i>My Designs</h3>
         <div class="designs-grid" id="myDesignsGrid">
             <div class="text-center py-4 text-muted" id="noDesignsMsg">
