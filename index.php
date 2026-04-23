@@ -4,8 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require 'includes/config.php';
 $pageTitle = 'Home';
-$bodyClass = 'home-page app-page';
-$mobileDockCurrent = 'home';
+$bodyClass = 'home-page';
 include 'includes/header/header.php';
 ?>
 
@@ -38,35 +37,6 @@ include 'includes/header/header.php';
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="home-mobile-quick-actions d-md-none">
-        <div class="container">
-            <div class="mobile-app-card">
-                <div class="mobile-app-card-header">
-                    <span>Quick Actions</span>
-                    <small>Shop faster on mobile</small>
-                </div>
-                <div class="mobile-quick-grid">
-                    <a href="shop.php" class="mobile-quick-link">
-                        <i class="fas fa-store"></i>
-                        <span>Shop</span>
-                    </a>
-                    <a href="custom-design.php" class="mobile-quick-link">
-                        <i class="fas fa-palette"></i>
-                        <span>Design</span>
-                    </a>
-                    <a href="my-custom-orders.php" class="mobile-quick-link">
-                        <i class="fas fa-shirt"></i>
-                        <span>Orders</span>
-                    </a>
-                    <a href="contact.php" class="mobile-quick-link">
-                        <i class="fas fa-headset"></i>
-                        <span>Help</span>
-                    </a>
                 </div>
             </div>
         </div>

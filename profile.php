@@ -3,8 +3,6 @@ require 'includes/config.php';
 redirectToLogin();
 
 $pageTitle = 'My Profile';
-$bodyClass = 'app-page profile-page';
-$mobileDockCurrent = 'profile';
 $error = '';
 $success = '';
 
@@ -74,24 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include 'includes/header/header.php'; ?>
 
-<div class="container py-4 app-page-shell profile-page-shell">
-    <div class="app-page-hero profile-page-hero mb-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb" style="font-size:0.85rem;">
-                <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active">Profile</li>
-            </ol>
-        </nav>
-        <h1 class="app-page-title">My Profile</h1>
-        <p class="app-page-subtitle">Manage your account details, saved delivery address, and password settings in one place.</p>
-    </div>
-
-    <div class="app-mobile-chip-row d-lg-none mb-4">
-        <a href="orders.php" class="app-mobile-chip">Orders</a>
-        <a href="my-custom-orders.php" class="app-mobile-chip">Custom Orders</a>
-        <a href="custom-design.php" class="app-mobile-chip">Design</a>
-        <a href="cart.php" class="app-mobile-chip">Cart</a>
-    </div>
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="font-size:0.85rem;">
+            <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active">Profile</li>
+        </ol>
+    </nav>
+    <h1 style="font-weight:800; font-size:2rem; margin-bottom:1.5rem;">My Profile</h1>
 
     <?php if ($error): ?>
         <div class="alert alert-danger" style="border-radius:12px; border:none; font-size:0.9rem;"><?php echo htmlspecialchars($error); ?></div>
@@ -102,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="row g-4">
         <div class="col-md-8">
-            <div class="card border-0 app-card" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
+            <div class="card border-0" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
                 <div class="card-body p-4">
                     <h5 style="font-weight:700; margin-bottom:1.25rem;">Update Profile</h5>
                     <form method="POST">
@@ -182,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="col-md-4">
-            <div class="card border-0 mb-3 app-card" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
+            <div class="card border-0 mb-3" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
                 <div class="card-body p-4">
                     <h6 style="font-weight:700; margin-bottom:1rem;">Account Information</h6>
                     <dl class="row" style="font-size:0.88rem; margin-bottom:0;">
@@ -217,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="card border-0 app-card" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
+            <div class="card border-0" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
                 <div class="card-body p-4">
                     <h6 style="font-weight:700; margin-bottom:1rem;"><i class="fas fa-truck me-1" style="color:var(--accent-green, #2d6a4f);"></i> Saved Address</h6>
                     <?php if (!empty($user['street_address'])): ?>
@@ -234,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="card border-0 mt-3 app-card" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
+            <div class="card border-0 mt-3" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
                 <div class="card-body p-4">
                     <h6 style="font-weight:700; margin-bottom:1rem;">Your Benefits</h6>
                     <?php if ($user['user_type'] === 'pwd'): ?>
@@ -250,16 +238,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="card border-0 mt-3 app-card profile-quick-links" style="border:1px solid var(--border-light); border-radius:var(--radius-lg);">
-                <div class="card-body p-4">
-                    <h6 style="font-weight:700; margin-bottom:1rem;">Quick Actions</h6>
-                    <div class="d-grid gap-2">
-                        <a href="orders.php" class="btn btn-outline-dark btn-sm" style="border-radius:10px;"><i class="fas fa-box me-1"></i> View Orders</a>
-                        <a href="my-custom-orders.php" class="btn btn-outline-dark btn-sm" style="border-radius:10px;"><i class="fas fa-shirt me-1"></i> Custom Orders</a>
-                        <a href="custom-design.php" class="btn btn-dark btn-sm" style="border-radius:10px;"><i class="fas fa-palette me-1"></i> Start Designing</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
